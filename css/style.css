@@ -1,3 +1,65 @@
+html{
+    /*Colors*/
+    --color1:#354a2f;
+    --color2:#5c724a;
+    --color3:#a3b68a;
+    --color4:#dbcfb1;
+    --color5:#f5f5d5;
+    --color6:#b6938a;
+    /*Colors*/
+    background-color: var(--color5);
+}
 .gamePlace{
-    
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap:15px;
+    max-width: 440px;
+    margin: 20px auto;
+}
+.card{
+    width: 200px;
+    height: 200px;
+    position: relative;
+    cursor: pointer;
+
+}
+.backSide{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-color:var(--color4);
+    border: 4px solid;
+    border-image: linear-gradient(320deg, var(--color1), var(--color3)) 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.circle{
+    width: 60px;
+    height: 60px;
+    border:4px double var(--color1);
+    border-radius: 50%;
+    position: absolute;
+}
+.circle.right{
+    top:50px;
+    left:45px;
+}
+.circle.left{
+    top:50px;
+    left:95px;
+}
+.circle.under{
+    top:95px;
+    left:70px;
+}
+
+.frontSide{
+    width: 100%;
+    height: 100%;
+}
+.frontSide > img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
