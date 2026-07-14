@@ -23,6 +23,7 @@ console.log("I have " + picturesAboutPlaces.length + " card in the deck." );
 /* Array for the pictures */
 
 /* Function for mix the cards*/
+
 function mixTheDeck (picturesAboutPlaces){
     /*a for loop for the circle*/
     for (let i = picturesAboutPlaces.length - 1; i > 0 ; i--){
@@ -35,8 +36,9 @@ function mixTheDeck (picturesAboutPlaces){
     }
     return picturesAboutPlaces;
 }
-
+/*call the function*/
 let gameDeck = mixTheDeck(picturesAboutPlaces);
 
 console.log("The mixed deck:", gameDeck );
+
 /* Function for mix the cards*/
