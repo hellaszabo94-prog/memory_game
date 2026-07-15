@@ -1,22 +1,22 @@
 /* array for the pictures */
 
 const picturesAboutPlaces=[
-    "egypt.jpg",
-    "egypt.jpg",
-    "hungary.jpg",
-    "hungary.jpg",
-    "india.jpg",
-    "india.jpg",
-    "italy.jpg",
-    "italy.jpg",
-    "malaysia.jpg",
-    "malaysia.jpg",
-    "united_kingdom.jpg",
-    "united_kingdom.jpg",
-    "usa.jpg",
-    "usa.jpg",
-    "vietnam.jpg",
-    "vietnam.jpg"
+    "pictures/egypt.jpg",
+    "pictures/egypt.jpg",
+    "pictures/hungary.jpg",
+    "pictures/hungary.jpg",
+    "pictures/india.jpg",
+    "pictures/india.jpg",
+    "pictures/italy.jpg",
+    "pictures/italy.jpg",
+    "pictures/malaysia.jpg",
+    "pictures/malaysia.jpg",
+    "pictures/united_kingdom.jpg",
+    "pictures/united_kingdom.jpg",
+    "pictures/usa.jpg",
+    "pictures/usa.jpg",
+    "pictures/vietnam.jpg",
+    "pictures/vietnam.jpg"
 ];
 
 console.log("I have " + picturesAboutPlaces.length + " card in the deck." );
@@ -81,3 +81,30 @@ function addTheGameBoard () {
 /* call the function*/
 addTheGameBoard();
 /* add cards to the html*/
+
+/* change the card sides*/
+    
+/* choose every card div*/
+const cards = document.querySelectorAll(".card");
+
+/* create a function to switch sides by one card*/
+cards.forEach(function(oneCard){
+    /* add a event listener for a click from the user */
+    oneCard.addEventListener('click', function showFrontSide() {
+    /*check in colnsole log */
+    console.log("click on a card");
+    /*choose the backSide class*/
+    const disapperBackSide = oneCard.querySelector(".backSide");
+    /*add to the element with backSide class extra the upside class */
+    disapperBackSide.classList.toggle("upside");
+    /*same prozess by frontSide class*/
+    const upFrontSide = oneCard.querySelector(".frontSide");
+
+    upFrontSide.classList.toggle("upside");
+    }) ;
+
+
+}) ;
+
+
+/* change the card sides*/

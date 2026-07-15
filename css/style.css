@@ -70,9 +70,9 @@ html{
 }
 
 /*for JS*/
-.card.upside .backSide{
+.backSide.upside{
     display: none;
 }
-.card.upside .frontSide{
+.frontSide.upside{
     display: block;
 }
