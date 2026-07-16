@@ -23,43 +23,45 @@ console.log("I have " + picturesAboutPlaces.length + " card in the deck." );
 
 /* array for the pictures */
 
+
 /* function for mix the cards */
 
 function mixTheDeck (picturesAboutPlaces){
-    /* a for loop for the circle */
+        //a for loop for the circle 
     for (let i = picturesAboutPlaces.length - 1; i > 0 ; i--){
-        /*get a random number between 0 and 15*/
+        //get a random number between 0 and 15
         const randomCard = Math.floor(Math.random() * (i + 1));
-        /*replace the random number's image with the current 'i's image*/ 
+        //replace the random number's image with the current 'i's image 
         const temporary = picturesAboutPlaces[i];
         picturesAboutPlaces[i] = picturesAboutPlaces [randomCard];
         picturesAboutPlaces[randomCard] = temporary;
     }
     return picturesAboutPlaces;
 }
-/* call the function */
+    // call the function
 let gameDeck = mixTheDeck(picturesAboutPlaces);
 
 console.log("The mixed deck:", gameDeck );
 
 /* function for mix the cards */
 
+
 /* add cards to the html*/
 
-/* choose the element where I would place the new elements */
+    //choose the element where I would place the new elements
 const gamePlace = document.querySelector("#gamePlace");
 
-/* functions to add the new cards */
+    //functions to add the new cards
 
 function addTheGameBoard () {
 
-    /* clean the gameplace */
+    //clean the gameplace
     gamePlace.innerHTML = "";
 
-    /* add every card from the deck */
+    //add every card from the deck
     gameDeck.forEach(function(pics) {
 
-        /* create a variabel for the new html element */
+        // create a variabel for the new html element
         const cardHtml= `
                 <div class="card">
                     <div class="backSide">
@@ -72,39 +74,66 @@ function addTheGameBoard () {
                     </div>
                 </div>`;
         
-        /* add the new html element to the game place */
+        // add the new html element to the game place
         gamePlace.innerHTML+=cardHtml;
 
     });
 
 }
-/* call the function*/
+    //call the function
 addTheGameBoard();
+
 /* add cards to the html*/
 
+
 /* change the card sides*/
-    
-/* choose every card div*/
+
+    //global variabel to save the first and second card
+let firstCard = null;
+let secondCard = null;
+
+    //choose every card div
 const cards = document.querySelectorAll(".card");
 
-/* create a function to switch sides by one card*/
+    //create a function to switch sides by one card
 cards.forEach(function(oneCard){
-    /* add a event listener for a click from the user */
+    //add a event listener for a click from the user
     oneCard.addEventListener('click', function showFrontSide() {
-    /*check in colnsole log */
+    //check in colnsole log
     console.log("click on a card");
-    /*choose the backSide class*/
+    //choose the backSide class
     const disapperBackSide = oneCard.querySelector(".backSide");
-    /*add to the element with backSide class extra the upside class */
+    //add to the element with backSide class extra the upside class 
     disapperBackSide.classList.toggle("upside");
-    /*same prozess by frontSide class*/
+    //same prozess by frontSide class
     const upFrontSide = oneCard.querySelector(".frontSide");
 
     upFrontSide.classList.toggle("upside");
+        //add oneCard value to global variabels
+    if (firstCard === null) {
+        //if firstCard empty add a oneCard value
+        firstCard = oneCard;
+        // check in console 
+        console.log("save the first card");
+        } else {
+        //if firstCard alreasy full than add in the secondCard variabel 
+        secondCard = oneCard;
+        // check in console 
+        console.log("save the second card");
+    }
     }) ;
 
-
 }) ;
-
-
 /* change the card sides*/
+
+
+/*check the vales are the same or not*/
+const firstPicsRoot = firstCard.querySelector("pics").src; 
+const secondPicsRoot = secondCard.querySelector("pics").src;
+
+if (firstPicsRoot === secondPicsRoot){
+    console.log("they are same");
+} else{
+    
+}
+/*check the vales are the same or not*/
