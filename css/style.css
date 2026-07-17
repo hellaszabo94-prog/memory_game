@@ -9,6 +9,9 @@ html{
     /*Colors*/
     background-color: var(--color5);
 }
+h1{
+    color: #354a2f;
+}
 #gamePlace{
     display: grid;
     grid-template-columns: repeat(4, 200px);
