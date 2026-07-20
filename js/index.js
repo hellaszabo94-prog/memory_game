@@ -38,7 +38,7 @@ function mixTheDeck (picturesAboutPlaces){
     }
     return picturesAboutPlaces;
 }
-    // call the function
+// call the function
 let gameDeck = mixTheDeck(picturesAboutPlaces);
 
 console.log("The mixed deck:", gameDeck );
@@ -48,10 +48,10 @@ console.log("The mixed deck:", gameDeck );
 
 /* add cards to the html*/
 
-    //choose the element where I would place the new elements
+//choose the element where I would place the new elements
 const gamePlace = document.querySelector("#gamePlace");
 
-    //functions to add the new cards
+//functions to add the new cards
 
 function addTheGameBoard () {
 
@@ -80,7 +80,7 @@ function addTheGameBoard () {
     });
 
 }
-    //call the function
+//call the function
 addTheGameBoard();
 
 /* add cards to the html*/
@@ -88,14 +88,14 @@ addTheGameBoard();
 
 /* change the card sides and check that they are same or not*/
 
-    //global variabel to save the first and second card
+//global variabel to save the first and second card
 let firstCard = null;
 let secondCard = null;
 
-    //choose every card div
+//choose every card div
 const cards = document.querySelectorAll(".card");
 
-    //create a function to switch sides by one card
+//create a function to switch sides by one card
 cards.forEach(function(oneCard){
     //add a event listener for a click from the user
     oneCard.addEventListener('click', function showFrontSide() {
@@ -135,6 +135,18 @@ cards.forEach(function(oneCard){
 
         } else{
             console.log("they are not same");
+            function removeupside(){
+                //remove the upside class 
+                firstCard.querySelector(".backSide").classList.remove("upside");
+                firstCard.querySelector(".frontSide").classList.remove("upside");
+
+                secondCard.querySelector(".backSide").classList.remove("upside");
+                secondCard.querySelector(".frontSide").classList.remove("upside");
+
+                firstCard = null ;
+                secondCard = null ;
+            }
+            setTimeout(removeupside, 1000);
          }
 
     }
