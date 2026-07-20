@@ -30,8 +30,8 @@ h1{
     grid-template-columns: repeat(4, 200px);
     gap:15px ;
     max-width: 845px;
-    margin: 20px auto;
-    margin-bottom: 100px;
+    margin: 120px auto;
+    
 }
 .card{
     width: 200px;
@@ -92,7 +92,8 @@ footer > p {
     padding: 25px;
     color: var(--color1);
     font-family: "Roboto", sans-serif;
-} 
+    
+}
 
 /*for JS*/
 .backSide.upside{
