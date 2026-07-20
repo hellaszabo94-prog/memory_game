@@ -86,14 +86,17 @@ addTheGameBoard();
 /* add cards to the html*/
 
 
-/* change the card sides and check that they are same or not*/
+/* change the card sides, check that they are same or not, lock the table meanwhile two cards show the front side*/
 
 //global variabel to save the first and second card
 let firstCard = null;
 let secondCard = null;
 //variabel to lock the table 
 let lock = false;
+//variabels to win 
+let foundpairs = 0;
 
+const maxpairs = picturesAboutPlaces.length / 2;
 //choose every card div
 const cards = document.querySelectorAll(".card");
 
@@ -134,9 +137,22 @@ cards.forEach(function(oneCard){
             // remove the addEventListener
             firstCard.style.pointerEvents="none";
             secondCard.style.pointerEvents="none";
+
+            // add the found pairs to the global variabel
+            foundpairs++;
+
             //empty the variabeln
             firstCard = null ;
             secondCard = null ;
+            // block is user win get a message and can start a new game
+            if (foundpairs === maxpairs){
+                function winMessageAndNewGame(){
+                    const newgame = confirm("Congrats, you won! :) To start a new game, click OK.");
+                    
+                    if(newgame){location.reload();}
+                }
+                setTimeout(winMessageAndNewGame, 500)
+            }
 
         } else{
             console.log("they are not same");
@@ -162,4 +178,4 @@ cards.forEach(function(oneCard){
     }) ;
 
 }) ;
-/* change the card sides*/
+/* change the card sides, check that they are same or not, lock the table meanwhile two cards show the front side*/
