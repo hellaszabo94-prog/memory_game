@@ -91,6 +91,8 @@ addTheGameBoard();
 //global variabel to save the first and second card
 let firstCard = null;
 let secondCard = null;
+//variabel to lock the table 
+let lock = false;
 
 //choose every card div
 const cards = document.querySelectorAll(".card");
@@ -98,9 +100,12 @@ const cards = document.querySelectorAll(".card");
 //create a function to switch sides by one card
 cards.forEach(function(oneCard){
     //add a event listener for a click from the user
+
     oneCard.addEventListener('click', function showFrontSide() {
     //check in colnsole log
     console.log("click on a card");
+    //if lock variable value true break the function
+    if (lock === true) return;
     //choose the backSide class
     const disapperBackSide = oneCard.querySelector(".backSide");
     //add to the element with backSide class extra the upside class 
@@ -135,6 +140,8 @@ cards.forEach(function(oneCard){
 
         } else{
             console.log("they are not same");
+            //lock the table if pics are not same
+            lock = true;
             function removeupside(){
                 //remove the upside class 
                 firstCard.querySelector(".backSide").classList.remove("upside");
@@ -142,9 +149,11 @@ cards.forEach(function(oneCard){
 
                 secondCard.querySelector(".backSide").classList.remove("upside");
                 secondCard.querySelector(".frontSide").classList.remove("upside");
-
+                //clean variables for the next turn
                 firstCard = null ;
                 secondCard = null ;
+                //open the table for the next turn
+                lock = false
             }
             setTimeout(removeupside, 1000);
          }
