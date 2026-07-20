@@ -31,6 +31,7 @@ h1{
     gap:15px ;
     max-width: 845px;
     margin: 20px auto;
+    margin-bottom: 100px;
 }
 .card{
     width: 200px;
@@ -84,6 +85,14 @@ h1{
     height: 100%;
     object-fit: cover;
 }
+
+footer > p {
+    text-align: center;
+    border-top:2px solid var(--color1);
+    padding: 25px;
+    color: var(--color1);
+    font-family: "Roboto", sans-serif;
+} 
 
 /*for JS*/
 .backSide.upside{
