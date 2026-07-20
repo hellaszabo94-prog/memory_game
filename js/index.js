@@ -86,7 +86,7 @@ addTheGameBoard();
 /* add cards to the html*/
 
 
-/* change the card sides*/
+/* change the card sides and check that they are same or not*/
 
     //global variabel to save the first and second card
 let firstCard = null;
@@ -115,25 +115,30 @@ cards.forEach(function(oneCard){
         firstCard = oneCard;
         // check in console 
         console.log("save the first card");
-        } else {
-        //if firstCard alreasy full than add in the secondCard variabel 
+        } else if (secondCard === null && oneCard !== firstCard) {
+       
         secondCard = oneCard;
         // check in console 
         console.log("save the second card");
+            //first and second pic with sources in variabel
+        const firstPicsRoot = firstCard.querySelector("img").src; 
+        const secondPicsRoot = secondCard.querySelector("img").src;
+            //check the vales are the same or not
+        if (firstPicsRoot === secondPicsRoot){
+            console.log("they are same");
+            // remove the addEventListener
+            firstCard.style.pointerEvents="none";
+            secondCard.style.pointerEvents="none";
+            //empty the variabeln
+            firstCard = null ;
+            secondCard = null ;
+
+        } else{
+            console.log("they are not same");
+         }
+
     }
     }) ;
 
 }) ;
 /* change the card sides*/
-
-
-/*check the vales are the same or not*/
-const firstPicsRoot = firstCard.querySelector("pics").src; 
-const secondPicsRoot = secondCard.querySelector("pics").src;
-
-if (firstPicsRoot === secondPicsRoot){
-    console.log("they are same");
-} else{
-    
-}
-/*check the vales are the same or not*/
