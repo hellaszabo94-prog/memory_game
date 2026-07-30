@@ -27,18 +27,18 @@ console.log("I have " + picturesAboutPlaces.length + " card in the deck." );
 /* function for mix the cards */
 
 function mixTheDeck (picturesAboutPlaces){
-        //a for loop for the circle 
+       
     for (let i = picturesAboutPlaces.length - 1; i > 0 ; i--){
-        //get a random number between 0 and 15
+      
         const randomCard = Math.floor(Math.random() * (i + 1));
-        //replace the random number's image with the current 'i's image 
+         
         const temporary = picturesAboutPlaces[i];
         picturesAboutPlaces[i] = picturesAboutPlaces [randomCard];
         picturesAboutPlaces[randomCard] = temporary;
     }
     return picturesAboutPlaces;
 }
-// call the function
+
 let gameDeck = mixTheDeck(picturesAboutPlaces);
 
 console.log("The mixed deck:", gameDeck );
@@ -48,7 +48,7 @@ console.log("The mixed deck:", gameDeck );
 
 /* add cards to the html*/
 
-//choose the element where I would place the new elements
+
 const gamePlace = document.querySelector("#gamePlace");
 
 //functions to add the new cards
@@ -61,7 +61,7 @@ function addTheGameBoard () {
     //add every card from the deck
     gameDeck.forEach(function(pics) {
 
-        // create a variabel for the new html element
+        
         const cardHtml= `
                 <div class="card">
                     <div class="backSide">
@@ -74,13 +74,13 @@ function addTheGameBoard () {
                     </div>
                 </div>`;
         
-        // add the new html element to the game place
+        
         gamePlace.innerHTML+=cardHtml;
 
     });
 
 }
-//call the function
+
 addTheGameBoard();
 
 /* add cards to the html*/
@@ -88,84 +88,93 @@ addTheGameBoard();
 
 /* change the card sides, check that they are same or not, lock the table meanwhile two cards show the front side*/
 
-//global variabel to save the first and second card
+
 let firstCard = null;
 let secondCard = null;
-//variabel to lock the table 
+ 
 let lock = false;
-//variabels to win 
+
 let foundpairs = 0;
 
 const maxpairs = picturesAboutPlaces.length / 2;
-//choose every card div
+
 const cards = document.querySelectorAll(".card");
 
 //create a function to switch sides by one card
 cards.forEach(function(oneCard){
-    //add a event listener for a click from the user
 
     oneCard.addEventListener('click', function showFrontSide() {
-    //check in colnsole log
-    console.log("click on a card");
-    //if lock variable value true break the function
-    if (lock === true) return;
-    //choose the backSide class
-    const disapperBackSide = oneCard.querySelector(".backSide");
-    //add to the element with backSide class extra the upside class 
-    disapperBackSide.classList.toggle("upside");
-    //same prozess by frontSide class
-    const upFrontSide = oneCard.querySelector(".frontSide");
+    
+        console.log("click on a card");
 
-    upFrontSide.classList.toggle("upside");
+        if (lock === true) return;
+        
+        const disapperBackSide = oneCard.querySelector(".backSide");
+        
+        disapperBackSide.classList.toggle("upside");
+        
+        const upFrontSide = oneCard.querySelector(".frontSide");
+
+        upFrontSide.classList.toggle("upside");
+        
         //add oneCard value to global variabels
-    if (firstCard === null) {
-        //if firstCard empty add a oneCard value
-        firstCard = oneCard;
-        // check in console 
-        console.log("save the first card");
-        } else if (secondCard === null && oneCard !== firstCard) {
-       
-        secondCard = oneCard;
-        // check in console 
-        console.log("save the second card");
-            //first and second pic with sources in variabel
-        const firstPicsRoot = firstCard.querySelector("img").src; 
-        const secondPicsRoot = secondCard.querySelector("img").src;
-            //check the vales are the same or not
-        if (firstPicsRoot === secondPicsRoot){
-            console.log("they are same");
-            // remove the addEventListener
-            firstCard.style.pointerEvents="none";
-            secondCard.style.pointerEvents="none";
+        if (firstCard === null) {
+            
+            firstCard = oneCard;
+             
+            console.log("save the first card");
 
-            // add the found pairs to the global variabel
-            foundpairs++;
+            } else if (secondCard === null && oneCard !== firstCard) {
+        
+            secondCard = oneCard;
+            
+            console.log("save the second card");
+               
+            const firstPicsRoot = firstCard.querySelector("img").src; 
+            const secondPicsRoot = secondCard.querySelector("img").src;
 
-            //empty the variabeln
-            firstCard = null ;
-            secondCard = null ;
-            // block is user win get a message and can start a new game
-            if (foundpairs === maxpairs){
-                function winMessageAndNewGame(){
-                    const newgame = confirm("Congrats, you won! :) To start a new game, click OK.");
-                    
-                    if(newgame){location.reload();}
-                }
-                setTimeout(winMessageAndNewGame, 500)
+            //check values are the same or not
+            if (firstPicsRoot === secondPicsRoot){
+                console.log("they are same");
+               
+                firstCard.style.pointerEvents="none";
+                secondCard.style.pointerEvents="none";
+
+                
+                foundpairs++;
+
+                
+                firstCard = null ;
+                secondCard = null ;
+
+                // if user win get a message and can start a new game
+                if (foundpairs === maxpairs){
+
+                    function winMessageAndNewGame(){
+
+                        const newgame = confirm("Congrats, you won! :) To start a new game, click OK.");
+                        
+                        if(newgame){location.reload();}
+                    }
+                    setTimeout(winMessageAndNewGame, 500)
             }
 
         } else{
+
             console.log("they are not same");
+
             //lock the table if pics are not same
+
             lock = true;
+            //turn cards back if they aren't same
             function removeupside(){
-                //remove the upside class 
+                
                 firstCard.querySelector(".backSide").classList.remove("upside");
                 firstCard.querySelector(".frontSide").classList.remove("upside");
 
                 secondCard.querySelector(".backSide").classList.remove("upside");
                 secondCard.querySelector(".frontSide").classList.remove("upside");
-                //clean variables for the next turn
+               
                 firstCard = null ;
                 secondCard = null ;
                 //open the table for the next turn
