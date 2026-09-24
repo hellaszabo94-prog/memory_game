@@ -9,6 +9,9 @@ html{
     /*Colors*/
     background-color: var(--color5);
 }
+* {
+    box-sizing: border-box;
+}
 h1{
     color: var(--color1);
     text-align: center;
