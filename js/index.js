@@ -107,7 +107,7 @@ cards.forEach(function(oneCard){
     
         console.log("click on a card");
 
-        if (lock === true || oneCard === firstCard) return;
+        if (lock === true) return;
         
         const disapperBackSide = oneCard.querySelector(".backSide");
         
